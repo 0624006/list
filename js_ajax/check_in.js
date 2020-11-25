@@ -33,7 +33,7 @@ $(function () {
         emp = `${emp_no}　${emp_name} `; // 報到人員，格式：09136　林鈺真
         console.log(emp);
         $('.emp>span').html(`${emp}　報到成功！`); // 報到成功提示
-
+        $('.emp_list').prepend($("<span/>", { "text": emp, })); // 顯示人員名單
         insert(emp_no, emp_name, emp_dep);
     }
 
@@ -64,7 +64,7 @@ $(function () {
             url: 'ajax/emp_emplist.php',
             type: 'post',
             cache: false,
-            dataType: 'json',
+            dataType: 'text',
             data: {
                 'action': 'emp_insert',
                 'emp_no': emp_no,
@@ -72,11 +72,6 @@ $(function () {
                 'emp_dep': emp_dep,
             },
             success: function (data) {
-                console.log(data);
-                $.each(data, function (index, n) {
-                    emp = data[index].emp_no + "　" + data[index].emp_name;
-                });
-                $('.emp_list').prepend($("<span/>", { "text": emp, })); // 顯示人員名單
             },
             error: function (xhr) { alert("發生錯誤: " + xhr.status + " " + xhr.statusText); }
         });
