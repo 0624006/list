@@ -1,0 +1,120 @@
+$duration: var(--duration);
+
+*{
+    padding: 0 0;
+    margin: 0 0;
+    box-sizing: border-box;
+    font-family: Verdana, Microsoft JhengHei;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: url('../../asset/list_NID2.png');
+    background-size: cover;
+	overflow:hidden;
+    overflow-x:hidden;
+}
+.container, .col-12, .row{
+    padding: 0 0;
+    margin: 0 0;
+}
+
+.container {
+	max-width: 100%;
+    height:100%;
+    position: relative;    
+}
+
+#list_tittle{
+    height: 14%;
+    justify-content: center;
+    font-size: 4.5vmin;
+    display: flex;
+    align-items: flex-end;
+    font-weight: bolder;
+}
+
+#list{
+    padding: 0.2% 0% 0% 3%;
+    >div{
+        font-size: 3.8vmin;
+        padding: 1.5% 0% 1% 4.5%;
+        position: relative;
+        &:nth-last-child(odd):before{
+            content: "";
+            position: absolute;
+            height: 12%;
+            width: 2%;
+            top: 3.5vh;
+            left: 2.5vw;
+            background: darkgreen;
+            // background: saddlebrown;
+        }
+        &:nth-last-child(even):before{
+            content: "";
+            position: absolute;
+            height: 12%;
+            width: 2%;
+            top: 3.5vh;
+            left: 2.5vw;
+            background: mediumseagreen;
+            // background: rosybrown;
+        }
+        &.new{
+            &:after{
+                content: "";
+                position: absolute;
+                top: 3vh;
+                left: -2vw;
+                font-size: 2.5vmin;
+                background: url("../../asset/new.gif");
+                background-size: cover;
+                width: 3em;
+                height: 1em;
+            }
+        }
+    }
+}
+
+.carousel{
+    height: 86%;
+    display: flex;
+    justify-content: center;    
+}
+
+.carousel-inner{
+    width: 77%;
+}
+
+#btn_bottom{
+    position: absolute;
+    bottom: 0.5%;
+    justify-content: center;
+    display: flex;
+    >p{
+        margin: 0 0;
+        font-size: 3vmin;
+        color: darkred;
+    }
+}
+
+.btn:focus,.btn:active:focus,
+.btn.active:focus,.btn.focus,
+.btn:active.focus,.btn.active.focus {  
+    outline: none;   
+    border-color: transparent;   
+    box-shadow:none!important;
+}
+
+.modal-body{
+    text-align: center;
+    align-items: center;
+}
+
+.carousel-indicators{
+    z-index: -10;
+    >li{
+        background-color: transparent;
+    }
+}
