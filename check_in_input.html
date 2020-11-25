@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <!-- 設定手機上的網頁畫面寬度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-tofit=no, user-scalable=no">
+
+    <!-- 不管什麼 IE 版本都可執行 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- 使用 bootstrap 語法 -->
+    <link href="./bootstrap/bootstrap_4.5.0.min.css" rel="stylesheet" type="text/css" />
+
+    <title></title>
+
+    <!--CSS & JS  -->
+    <link href="./css/style_ckin_input.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container wrapper">
+        <div class="col-12 emp">
+            <span></span>
+            <div class="col-12">
+                部門：<input type="text" oninput="this.value=this.value.replace(/[^A-Za-z0-9-]/g,'').toUpperCase();">
+                工號：<input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                姓名：<input type="text" >
+                <input type="button" value="確認" id="submit">
+            </div>
+        </div>
+        <div class="col-12 emp_title">
+            <span>手動成功報名人員名單</span>
+            <div class="col-12 row row-cols-3 emp_list">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <p id="md_content">Some text in the modal.</p>
+                    <button type="button" class="btn btn-success " id="bt_suc" data-dismiss="modal">Confirm</button>
+                    <button type="button" class="btn btn-danger" id="btn_clo" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--尾-->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./bootstrap/bootstrap_4.5.0.min.js"></script>
+    <script src="./bootstrap/bootstrap_4.5.0.bundle.min.js"></script>
+    <script src="./bootstrap/popper_1.14.7.min.js"></script>
+    <script src="./js/ckin_input.js" defer></script>
+    <!--
+        [ELAN] MIS 林鈺真 #3323
+    -->
+</body>
+
+</html>
