@@ -9,11 +9,11 @@ var dt = "";
 var time = "";
 var refreshSetTimeouId = "";
 var mutationObserver = "";
-var list_data="";
+var list_data = "";
 
 
 $(function () {
-    
+
     dt = new Date();
     time = (dt.getHours() < 10 ? "0" : "") + dt.getHours() + ":" + (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes() + ":" + (dt.getSeconds() < 10 ? "0" : "") + dt.getSeconds();
     $('#btn_bottom>p').html("— 更新時間：" + time + " —");
@@ -82,13 +82,20 @@ $(function () {
                 }
                 emp_num += 1;
             }
-        };
-
+        };        
     }
 
     function running() {
         clearTimeout(refreshSetTimeouId);
-        show_list();
+        if (n < 10) {
+            show_list();
+            refreshSetTimeouId = setTimeout(function () {
+                list();
+            }, 3000);
+        } else {
+            show_list();
+        }
+
         mutationObserver = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.target.getAttribute('data-slide-to') === ($('.carousel-indicators>li').length - 1).toString()) {
@@ -111,6 +118,7 @@ $(function () {
 
     // _ajax_新增人員進資料庫
     function list() {
+        clearTimeout(refreshSetTimeouId);
         $.ajax({
             url: 'ajax/emp_emplist.php',
             type: 'post',
@@ -120,9 +128,9 @@ $(function () {
                 'action': 'emp_list',
             },
             success: function (data) {
-                list_data=data;
+                list_data = data;
                 n = Object.keys(data).length;
-                console.log("000"+n);
+                console.log(n);
                 running();
             },
             error: function (xhr) { alert("發生錯誤: " + xhr.status + " " + xhr.statusText); }
