@@ -20,7 +20,6 @@ $(function () {
 
     // n = 9;//測試用
 
-
     list();
     //顯示資料，上面可不理。
     function show_list() {
@@ -86,7 +85,6 @@ $(function () {
     }
 
     function running() {
-        clearTimeout(refreshSetTimeouId);
         if (n < 10) {
             show_list();
             refreshSetTimeouId = setTimeout(function () {
